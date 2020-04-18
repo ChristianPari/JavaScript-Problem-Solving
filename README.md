@@ -1,4 +1,3 @@
-# Algorthims
 Alogirthms I've completed
 
 * Basic - FCC Algorithms
