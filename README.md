@@ -1,5 +1,4 @@
-Alogirthms I've completed
+These are folders based on the algorithm difficulty I found them to have.
 
-* Basic - FCC Algorithms
-* Medium - Algorithms that aren't basic but not intermediate level either
-* Intermediate - FCC Algorithms
+* Basic - Algorithms that I either began with or posed to be less challenging than expected
+* Intermediate - A step up from the basic, these took me a decent amount of time to complete. 
