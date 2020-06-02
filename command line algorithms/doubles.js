@@ -1,16 +1,20 @@
 // RUN program in terminal and have fun!
+//* ############### CREATE A .txt FILE CALLED highscores AND PLAY WITH ABILITY TO SAVE HIGHSCORES ###############
 
 const readline = require('readline'),
+    fs = require('fs'),
+    textFile = 'highscores.txt',
     rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout
     });
 
+if (fs.readFileSync(textFile, 'utf8') == "") { createBlankHS(); } // creates the simple object that stores the highscores
+
 console.log('\nWelcome to Doubles!\n\nThe goal of this game is to get the highest score possible rolling 2 dice consecitively and adding their values, but if you roll doubles then you lose and your score is wiped out!');
 
 // ######################### Global Variables #########################
-let highscores = [],
-    totalScore = 0;
+let totalScore = 0;
 
 Begin();
 
@@ -67,11 +71,9 @@ function SecondQuestion(answer3) {
 
     if (answer3 == 'S') {
 
-        highscores.push(totalScore);
-
         console.log(`\nYou're total score was: ${totalScore}\n`);
 
-        rl.question('Would you like to play again?\n(Y/N): ', Restart);
+        rl.question('Enter your name to save highscore: ', saveHS);
 
     } else {
 
@@ -83,6 +85,8 @@ function SecondQuestion(answer3) {
 
 function displayHighs() {
 
+    let highscores = getHS();
+
     if (highscores.length == 0) {
 
         rl.question('\nThere are currently no highscores, to start the game, press Enter!', FirstQuestion);
@@ -92,7 +96,12 @@ function displayHighs() {
     }
 
     console.log(`\n-----------\nHigh Scores\n-----------`);
-    console.log(`${highscores.join('\n')}`);
+
+    highscores.forEach(highscore => {
+
+        console.log(`${highscore.name}: ${highscore.score}`);
+
+    });
 
     rl.question('\nTo start the game press Enter!', FirstQuestion);
 
@@ -112,5 +121,42 @@ function Restart(answer2) {
         rl.close();
 
     }
+
+};
+
+function getHS() {
+
+    const rawData = fs.readFileSync(textFile, 'utf8'),
+        parsedData = JSON.parse(rawData);
+
+    return parsedData.highscores;
+
+};
+
+function saveHS(name) {
+
+    const rawData = fs.readFileSync(textFile, 'utf8'),
+        parsedData = JSON.parse(rawData);
+
+    parsedData.highscores.push({
+        name: name,
+        score: totalScore
+    });
+
+    parsedData.highscores.sort((a, b) => (a.score < b.score) ? 1 : -1);
+
+    let stringifiedHS = JSON.stringify(parsedData);
+
+    fs.writeFileSync(textFile, stringifiedHS);
+
+    rl.question('\nWould you like to play again?\n(Y/N): ', Restart);
+
+};
+
+function createBlankHS() {
+
+    const setup = JSON.stringify({ "highscores": [] });
+
+    fs.writeFileSync(textFile, setup);
 
 };
