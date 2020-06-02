@@ -1,0 +1,12 @@
+{
+    "name": "doubles.js-json",
+    "version": "1.0.0",
+    "description": "This is specifically for doubles.js",
+    "main": "doubles.js",
+    "scripts": {
+        "createDB": "code highscores.txt",
+        "start": "node doubles.js"
+    },
+    "author": "Christian Pari",
+    "license": "ISC"
+}

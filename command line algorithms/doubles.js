@@ -1,5 +1,6 @@
-// RUN program in terminal and have fun!
-//* ############### CREATE A .txt FILE CALLED highscores AND PLAY WITH ABILITY TO SAVE HIGHSCORES ###############
+// MUST ALSO USE THE PACKAGE.JSON FILE IN THIS REPO
+//! RUN npm run createDB (creates the .txt file for database use)
+//! RUN npm start (starts the game)
 
 const readline = require('readline'),
     fs = require('fs'),
