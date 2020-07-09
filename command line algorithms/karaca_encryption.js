@@ -7,29 +7,6 @@ const rl = require('readline').createInterface({
 
 const FirstQ = () => { rl.question("\nEnter an alphanumeric string: ", convert); };
 
-const alter = (char) => {
-
-    switch (char.toLowerCase()) {
-        case 'a':
-
-            return '0';
-
-        case 'e':
-
-            return '1';
-
-        case 'i' || 'o':
-
-            return '2';
-
-        case 'u':
-
-            return '3';
-
-    };
-
-};
-
 const convert = (res) => {
 
     res = res.split('').reverse();
