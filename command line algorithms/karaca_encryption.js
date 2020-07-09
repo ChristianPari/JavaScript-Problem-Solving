@@ -28,7 +28,8 @@ const convert = (res) => {
 
                 break;
 
-            case 'i' || 'o':
+            case 'i':
+            case 'o':
 
                 newArr.push('2');
 
