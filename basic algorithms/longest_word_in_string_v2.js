@@ -18,7 +18,9 @@ const longestWordLength = (str) => {
 
     // return strArr[0];
 
-    return str.split(" ").map(word => word.length).sort((a, b) => b - a)[0];
+    // return str.split(" ").map(word => word.length).sort((a, b) => b - a)[0];
+
+    return str.split(" ").sort((a, b) => b.length - a.length)[0];
 
 };
 
