@@ -1,2 +1,2 @@
-# JavaScript Algorithms
+# JavaScript Problem Solving
 ##### [Back to Algorithms Directory](https://github.com/ChristianPari/Algorithms-Directory)
